@@ -33,7 +33,7 @@ const Drawer = ({ isOpen, onClose }) => {
 
       {/* Drawer panel */}
       <div
-        className={`glass-container flex items-center justify-center fixed top-0 right-0 h-full w-[50%] transform transition-transform duration-300 ${
+        className={`glass-container flex items-center justify-center fixed top-0 right-0 h-full w-[50%] transform transition-transform duration-300 z-5 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
