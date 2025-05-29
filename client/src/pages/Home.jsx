@@ -6,10 +6,32 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Button from "../component/Button";
+import About from "./About";
+import WorkStep from "./WorkStep";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Home = () => {
+
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    window.scrollTo(0, 0);
+
+    const handleBeforeUnload = () => {
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
+  const isSmallScreen = window.matchMedia("(max-width: 639px)").matches;
+
   useGSAP(() => {
     const mesh = document.getElementById("move-mesh");
 
@@ -58,7 +80,6 @@ const Home = () => {
     btnMove?.addEventListener("mousemove", (e) => {
       const x = e.clientX;
       const y = e.clientY;
-      console.log(x, y);
 
       gsap.to(btn, {
         left: `${x}`,
@@ -69,8 +90,8 @@ const Home = () => {
 
   return (
     <>
-      <div className="bg-[#faede2] min-h-screen relative flex flex-col items-center justify-center overflow-hidden">
-        <div id="move-mesh" className="w-full h-full absolute sm:block hidden">
+      <div data-navbar-text-color="dark" className="bg-[#faede2] min-h-screen relative flex flex-col items-center justify-center overflow-hidden">
+        <div id="move-mesh" className="w-full h-full absolute sm:block">
           {logoData.map((logo, index) => (
             <div key={index}>
               <Canvas startIndex={logo} />
@@ -93,11 +114,8 @@ const Home = () => {
           <Button children={"Tailor • your • resume "} />
         </div>
       </div>
-      <div className="w-full h-screen flex items-center justify-center bg-black">
-        <div className="text-abt">
-          <h1>SAVIOUR -Job application made easy</h1>
-        </div>
-      </div>
+      <About />
+      <WorkStep />
     </>
   );
 };

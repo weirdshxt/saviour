@@ -3,11 +3,13 @@ import logos from "../assets/logo";
 import logoData from "../data";
 
 const Canvas = ({ startIndex }) => {
-  const { size, top, left, height } = startIndex;
+  const { size, size2, top, left, height } = startIndex;
 
   const [index, setIndex] = useState({ value: startIndex.startIndex });
 
   const canvasRef = useRef(null);
+
+  const isSmallScreen = window.matchMedia("(max-width: 639px)").matches;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -25,7 +27,7 @@ const Canvas = ({ startIndex }) => {
     <canvas
       ref={canvasRef}
       className="absolute"
-      style={{ width: `${size}rem`, objectFit:'contain', top:`${top}%`, left:`${left}%` }}
+      style={{ width: `${ isSmallScreen ? size2 : size}rem`, objectFit:'contain', top:`${top}%`, left:`${left}%` }}
     ></canvas>
   );
 };

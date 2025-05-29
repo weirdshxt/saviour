@@ -2,19 +2,16 @@
 
 @import "tailwindcss";
 
-*{
-  color: #2f2c2c
-}
 
 
 /* HamburgerIcon.css */
 
 @layer components {
   .line1 {
-    @apply w-18 h-[0.15rem] rounded bg-black transition-all duration-300 ease-in-out;
+    @apply w-18 h-[0.15rem] rounded transition-all duration-300 ease-in-out;
   }
   .line2 {
-    @apply w-18 h-[0.15rem] mt-2 rounded bg-black transition-all duration-300 ease-in-out;
+    @apply w-18 h-[0.15rem] mt-2 rounded transition-all duration-300 ease-in-out;
   }
 }
 
