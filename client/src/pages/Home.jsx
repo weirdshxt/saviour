@@ -114,8 +114,11 @@ const Home = () => {
           <Button children={"Tailor • your • resume "} />
         </div>
       </div>
-      <About />
-      <WorkStep />
+      <div className="relative">
+          <About />
+          <WorkStep />
+      </div>
+      
     </>
   );
 };

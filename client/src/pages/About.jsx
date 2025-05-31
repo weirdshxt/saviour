@@ -75,6 +75,7 @@ const About = () => {
 
   return (
     <div
+      id="about"
       data-navbar-text-color="light"
       className="w-full flex min-h-screen bg-black text-white overflow-hidden"
     >

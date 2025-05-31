@@ -17,7 +17,7 @@ const Button = ({ children }) => {
 
   return (
     <div className="glass-button flex justify-center items-center py-[2.375rem] px-[2.375rem] sm:py-[4.375rem] sm:px-[4.375rem] cursor-none">
-      <h2 className="text" ref={textRef}>
+      <h2 className="text text-black" ref={textRef}>
         {children}
       </h2>
       <div className="icon absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center">
